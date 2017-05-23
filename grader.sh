@@ -8,7 +8,7 @@ git diff --name-only ${branch}..key >> FILENAME_RESULTS
 
 git checkout key
 
-for FILE in FILENAME_RESULTS
+for FILE in $(cat FILENAME_RESULTS)
 do    
   NAME=${FILE//+(*\/|\.*)}
   LAST=($find -name NAME -print0 -quit)  
