@@ -5,7 +5,7 @@ shopt -s extglob
 #branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 branch=$(git show --oneline -s --format="%h")
 
-git diff --name-only ${branch}..key >> FILENAME_RESULTS
+git diff --name-only ${branch}..origin/key >> FILENAME_RESULTS
 
 
 for FILE in $(cat FILENAME_RESULTS)
