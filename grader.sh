@@ -3,7 +3,7 @@
 shopt -s extglob
 
 
-branch = ($git rev-parse --abbrev-ref HEAD)
+branch=($git rev-parse --abbrev-ref HEAD)
 
 git diff --name-only branch..key >> FILENAME_RESULTS
 
