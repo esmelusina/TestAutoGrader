@@ -2,7 +2,10 @@
 
 shopt -s extglob
 
-git diff --name-only master..key >> FILENAME_RESULTS
+
+branch = ($git rev-parse --abbrev-ref HEAD)
+
+git diff --name-only branch..key >> FILENAME_RESULTS
 
 for FILE in (FILENAME_RESULTS)
 do    
@@ -10,6 +13,6 @@ do
   git checkout key
   LAST=($find -name NAME -print0 -quit)  
   echo ${NAME}
-  git diff --unchanged-line-format="" --old-line-format="" --new-line-format=":%dn: %L" master:FILE key:LAST
+  git diff --unchanged-line-format="" --old-line-format="" --new-line-format=":%dn: %L" branch:FILE key:LAST
   echo
   
