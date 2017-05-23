@@ -1,4 +1,7 @@
 before_install:
  - chmod +x grader.sh
 
+install:
+  - git fetch --unshallow --tags
+  
 script: ./grader.sh
