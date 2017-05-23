@@ -1,4 +1,4 @@
 before_install:
- - chmod -+x grader.sh
+ - chmod +x grader.sh
 
 script: ./grader.sh
