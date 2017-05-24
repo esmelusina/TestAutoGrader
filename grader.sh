@@ -2,21 +2,29 @@
 
 shopt -s extglob
 
-#branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
-#branch=$(git show --oneline -s --format="%h")
+#
+commit=$(git show --oneline -s --format="%h")
 
-branch=$(git show --oneline -s --format="%h")
+# Fetch all the files that differ from the answer key branch and the commit
+git diff --name-only ${commit}..origin/key >> FILENAME_RESULTS
 
-git diff --name-only ${branch}..origin/key >> FILENAME_RESULTS
-
-
+# for each file that has differences
 for FILE in $(cat FILENAME_RESULTS)
-do    
-  NAME=${FILE//+(*\/|\.*)}
-  #LAST=$(git ls-tree -r --name-only origin/key | grep "\b${NAME}\b")
-  echo ${NAME}
-  diff --unchanged-line-format="" --old-line-format="" --new-line-format=":%dn " <(git show ${branch}:${FILE}) <(git show origin/key:${FILE})
-  echo
+do  
+  echo ${FILE}  
+  #NAME=${FILE//+(*\/|\.*)}
+  git rev-parse --verify --quiet origin/key:${FILE} >/dev/null
+  ec1=$?
+  git rev-parse --verify --quiet ${commit}:${FILE} >/dev/null
+  ec2=$?
+  echo $ec1
+  echo $ec2
+    
+    diff --unchanged-line-format="" --old-line-format="" --new-line-format="%dn " <(git show --quiet ${commit}:${FILE}) <(git show --quiet origin/key:${FILE})
+  #fi
+   echo
 done
 
+#unset NAME
+#unset commit
 rm FILENAME_RESULTS
