@@ -20,7 +20,7 @@ git diff --name-only --diff-filter=M ${commit} ${branch} >> FILENAME_RESULTS
 for FILE in $(cat FILENAME_RESULTS)
 do  
   echo ${FILE}  
-    diff --unchanged-line-format="" --old-line-format="" --new-line-format="%dn " <(git show --quiet ${commit}:${FILE}) <(git show --quiet ${branch}:${FILE})
+    diff --unchanged-line-format="" --old-line-format="" --new-line-format="%dn " <(git show ${commit}:${FILE}) <(git show ${branch}:${FILE})
    echo
 done
 
