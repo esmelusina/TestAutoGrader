@@ -2,6 +2,6 @@ before_install:
  - chmod +x grader.sh
 
 install:
-  - git fetch --all
+ - git remote set-branches --add origin 'key'
   
 script: ./grader.sh
