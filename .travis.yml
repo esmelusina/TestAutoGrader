@@ -2,6 +2,6 @@ before_install:
  - chmod +x grader.sh
 
 install:
-  - git fetch key
+  - git fetch
   
 script: ./grader.sh
