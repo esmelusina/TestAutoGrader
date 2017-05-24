@@ -2,6 +2,7 @@ before_install:
  - chmod +x grader.sh
 
 install:
- - git remote set-branches --add origin 'key'
+ - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+ - git fetch --all
   
 script: ./grader.sh
