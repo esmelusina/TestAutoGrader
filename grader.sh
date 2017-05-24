@@ -7,7 +7,7 @@ commit=$(git show --oneline -s --format="%h")
 
 branch=${1}
 
-if !$branch
+if [[ -z $branch ]]
 then
 branch=origin/key
 fi
