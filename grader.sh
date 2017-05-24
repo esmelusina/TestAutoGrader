@@ -19,8 +19,6 @@ git diff --name-only --diff-filter=M ${commit} ${branch} >> FILENAME_RESULTS
 # for each file that has differences
 for FILE in $(cat FILENAME_RESULTS)
 do  
-git show ${commit}:${FILE}
-git show ${branch}:${FILE}
   echo ${FILE}  
     diff --unchanged-line-format="" --old-line-format="" --new-line-format="%dn " <(git show ${commit}:${FILE}) <(git show ${branch}:${FILE})
    echo
