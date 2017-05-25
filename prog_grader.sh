@@ -30,7 +30,6 @@ do
     chmod +x $BASE
     echo $BASE
     diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
-    ./$BASE
 done
 
 
