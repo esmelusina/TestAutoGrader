@@ -26,11 +26,11 @@ echo $name
 for FILE in $(git diff --name-only --diff-filter=A ${branch} ${commit} | grep *.cpp)
 do
     BASE=${FILE%%.*}
-    g++ $BASE.cpp -o $BASE.exe
-    chmod +x $BASE.exe
+    g++ $BASE.cpp -o $BASE
+    chmod +x $BASE
     #.eo and #.in should exist w/same name diff extension as base on the key-branch
     echo $BASE
     #echo "comparing ${branch}:$BASE.eo and results from ${branch}:$BASE.in"
     #diff-line <(git show ${branch}:$BASE.eo) <(./$BASE.exe <(git show ${branch}:$BASE.in))
-    dir
+    ./$BASE
 done
