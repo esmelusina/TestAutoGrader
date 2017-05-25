@@ -30,6 +30,7 @@ do
     chmod +x $BASE.exe
     #.eo and #.in should exist w/same name diff extension as base on the key-branch
     echo $BASE
-    echo "comparing ${branch}:$BASE.eo and results from ${branch}:$BASE.in"
-    diff-line <(git show ${branch}:$BASE.eo) <(./$BASE.exe <(git show ${branch}:$BASE.in))
+    #echo "comparing ${branch}:$BASE.eo and results from ${branch}:$BASE.in"
+    #diff-line <(git show ${branch}:$BASE.eo) <(./$BASE.exe <(git show ${branch}:$BASE.in))
+    ./base.exe
 done
