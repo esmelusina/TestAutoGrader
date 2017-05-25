@@ -14,15 +14,16 @@ diff-line()
     lin=$((lin+1))
     if [ "$subline" != "$srcline" ] ;  then printf "$lin " ; fi    
   done
-  echo
 }
 
 commit=$(git show --oneline -s --format="%h")
-
 branch=${1}
+name=$TRAVIS_REPO_SLUG
 
 if [[ -z $branch ]]; then branch=origin/key; fi
+if [[ $name ]]; then name=$(dirname $name); else name="NULL"; fi
 
+echo $name
 
 for FILE in $(git diff --name-only --diff-filter=M ${commit} ${branch})
 do  
@@ -33,3 +34,28 @@ done
 
 unset commit
 unset branch
+
+
+#
+# 
+#
+#
+#
+# 
+# programming project directory structure
+#  key: .../<proj_name>/
+#   proj_name.in          -- input          
+#   proj_name.eo          -- expected output
+
+# commit: .../<proj_name>/
+#   assigment_file          -- assignment description with example input
+#   
+# 
+# 
+
+
+
+# Look for directories of added files.
+
+
+#
