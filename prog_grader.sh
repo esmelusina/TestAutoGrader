@@ -32,5 +32,5 @@ do
     echo $BASE
     #echo "comparing ${branch}:$BASE.eo and results from ${branch}:$BASE.in"
     #diff-line <(git show ${branch}:$BASE.eo) <(./$BASE.exe <(git show ${branch}:$BASE.in))
-    exec base.exe
+    dir
 done
