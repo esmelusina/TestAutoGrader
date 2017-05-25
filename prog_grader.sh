@@ -29,7 +29,7 @@ do
     g++ $BASE.cpp -o $BASE
     chmod +x $BASE
     echo $BASE
-    diff-line() <(git show ${branch}:$BASE.eo) <(./$BASE.exe)
+    diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
     ./$BASE
 done
 
