@@ -9,17 +9,11 @@ diff-line()
   src=$2
   lin=0
 
-
   while read srcline <$src || [ -n "$srcline" ]
   do
     read subline <$sub
     lin=$((lin+1))
-    printf $lin" "
-    echo $subline $srcline
-    #if [ "$subline" != "$srcline" ]
-    #then    
-    #printf " DIFF "
-    #fi    
+    if [ "$subline" != "$srcline" ] ;  then printf "$lin " ; fi    
   done
   echo
 }
