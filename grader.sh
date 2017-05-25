@@ -2,6 +2,29 @@
 
 shopt -s extglob
 
+
+diff-line()
+{
+  sub=$1
+  src=$2
+  lin=0
+
+
+  while read srcline <$src || [ -n "$srcline" ]
+  do
+    read subline <$sub
+    lin=$((lin+1))
+    printf $lin" "
+    echo $subline $srcline
+    #if [ "$subline" != "$srcline" ]
+    #then    
+    #printf " DIFF "
+    #fi    
+  done
+  echo
+}
+
+
 #
 commit=$(git show --oneline -s --format="%h")
 
@@ -20,6 +43,7 @@ git diff --name-only --diff-filter=M ${commit} ${branch} >> FILENAME_RESULTS
 for FILE in $(cat FILENAME_RESULTS)
 do  
   echo ${FILE}  
+    diff-line <(git show ${commit}:${FILE}) <(git show ${branch}:${FILE})
     diff --unchanged-line-format="" --old-line-format="" --new-line-format="%dn " <(git show ${commit}:${FILE}) <(git show ${branch}:${FILE})
    echo
 done
