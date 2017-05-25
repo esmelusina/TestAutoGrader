@@ -26,7 +26,7 @@ echo $name
 for FILE in $(git diff --name-only --diff-filter=A ${branch} ${commit} | grep *.cpp)
 do
     BASE=${FILE%%.*}
-    gcc $BASE.cpp -o $BASE.exe
+    g++ $BASE.cpp -o $BASE.exe
     chmod +x $BASE.exe
     #.eo and #.in should exist w/same name diff extension as base on the key-branch
     echo $BASE
