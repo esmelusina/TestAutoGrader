@@ -4,8 +4,8 @@ shopt -s extglob
 
 diff-line()
 {
-  sub=$1
-  src=$2
+  src=$1
+  sub=$2  
   lin=0
 
   while read srcline <$src || [ -n "$srcline" ]
@@ -25,10 +25,10 @@ if [[ $name ]]; then name=$(dirname $name); else name="NULL"; fi
 
 echo $name
 
-for FILE in $(git diff --name-only --diff-filter=M ${commit} ${branch})
+for FILE in $(git diff --name-only --diff-filter=M ${branch} ${commit})
 do  
   echo ${FILE}  
-    diff-line <(git show ${commit}:${FILE}) <(git show ${branch}:${FILE})
+    diff-line <(git show ${branch}:${FILE}) <(git show ${commit}:${FILE}) 
    echo
 done
 
