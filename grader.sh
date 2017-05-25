@@ -24,10 +24,7 @@ commit=$(git show --oneline -s --format="%h")
 
 branch=${1}
 
-if [[ -z $branch ]]
-then
-branch=origin/key
-fi
+if [[ -z $branch ]]; then branch=origin/key; fi
 
 # Fetch all the files that differ from the answer key branch and the commit
 git diff --name-only --diff-filter=M ${commit} ${branch} >> FILENAME_RESULTS
