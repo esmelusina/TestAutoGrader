@@ -40,7 +40,7 @@ do
       then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
       else diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in) )      
       fi
-    #fi      
+    fi      
 done
 
 
