@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## DEPRECATED, SEE PROG_GRADER.sh
+
 shopt -s extglob
 
 diff-line()
