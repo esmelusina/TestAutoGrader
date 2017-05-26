@@ -32,6 +32,18 @@ if [[ $name ]]; then name=$(dirname $name); else name="NULL"; fi
 # for machining, the name should be a database key
 echo $name
 
+## TODO : PRINT NAME ON EXACT MATCHES
+### Check for perfect quiz answers
+### For each file in the commit,
+### just use git show in branch to see if there was a submission or not.
+##  for FILE in $(git ls-tree -r --name-only ${commit})
+##  do
+    # 
+##      git show ${branch}:$BASE.eo &>/dev/null    
+##      if [[ $? -ne 0 ]]; then continue; fi
+##  done
+
+
 # quizes will check for non-historical file modifications
 for FILE in $(git diff --name-only --diff-filter=M ${branch} ${commit})
 do  
@@ -40,7 +52,7 @@ do
    echo
 done
 
-
+# programs need to be built
 for FILE in $(git diff --name-only --diff-filter=A ${branch} ${commit} | grep .cpp)
 do
     BASE=${FILE%%.*}
@@ -49,10 +61,11 @@ do
 
     echo $BASE
 
-    if hash g++ 2>/dev/null; then
+    if hash g++ 2>/dev/null; then #just in case g++ isn't present'
       g++ $BASE.cpp -o $BASE
       chmod +x $BASE
 
+      # branch for testing input
       git show ${branch}:$BASE.in &>/dev/null
       if [[ $? -ne 0 ]]
       then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
