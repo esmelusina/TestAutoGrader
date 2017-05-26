@@ -31,14 +31,14 @@ do
 
     echo $BASE
 
-    #if hash G++ 2>/dev/null; then
+    if hash G++ 2>/dev/null; then
       g++ $BASE.cpp -o $BASE
       chmod +x $BASE
 
       git show ${branch}:$BASE.in &>/dev/null
-      if [[ $? -eq 0 ]]
-      then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in) )
-      else diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
+      if [[ $? -ne 0 ]]
+      then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
+      else diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in) )      
       fi
     #fi      
 done
