@@ -31,7 +31,7 @@ do
 
     echo $BASE
 
-    if hash G++ 2>/dev/null; then
+    #if hash G++ 2>/dev/null; then
       g++ $BASE.cpp -o $BASE
       chmod +x $BASE
 
@@ -40,7 +40,7 @@ do
       then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in) )
       else diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
       fi
-    fi      
+    #fi      
 done
 
 
