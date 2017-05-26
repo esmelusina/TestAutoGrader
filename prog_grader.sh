@@ -22,7 +22,15 @@ if [[ $name ]]; then name=$(dirname $name); else name="NULL"; fi
 
 echo $name
 
-# verify that an .eo file matches, otherwise we should ignore
+
+for FILE in $(git diff --name-only --diff-filter=M ${branch} ${commit})
+do  
+  echo ${FILE}  
+    diff-line <(git show ${branch}:${FILE}) <(git show ${commit}:${FILE}) 
+   echo
+done
+
+
 for FILE in $(git diff --name-only --diff-filter=A ${branch} ${commit} | grep .cpp)
 do
     BASE=${FILE%%.*}
@@ -38,13 +46,7 @@ do
       git show ${branch}:$BASE.in &>/dev/null
       if [[ $? -ne 0 ]]
       then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
-      else
-      diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in) )      
+      else diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in))
       fi
     fi      
 done
-
-
-
-
-#diff-line <(git show ${branch}:$BASE.eo) <(./$BASE.exe <(git show ${branch}:$BASE.in))

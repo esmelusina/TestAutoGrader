@@ -31,31 +31,3 @@ do
     diff-line <(git show ${branch}:${FILE}) <(git show ${commit}:${FILE}) 
    echo
 done
-
-unset commit
-unset branch
-
-
-#
-# 
-#
-#
-#
-# 
-# programming project directory structure
-#  key: .../<proj_name>/
-#   proj_name.in          -- input          
-#   proj_name.eo          -- expected output
-
-# commit: .../<proj_name>/
-#   assigment_file          -- assignment description with example input
-#   
-# 
-# 
-
-
-
-# Look for directories of added files.
-
-
-#
