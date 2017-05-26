@@ -31,7 +31,7 @@ do
 
     echo $BASE
 
-    if hash G++ 2>/dev/null; then
+    if hash g++ 2>/dev/null; then
       g++ $BASE.cpp -o $BASE
       chmod +x $BASE
 
