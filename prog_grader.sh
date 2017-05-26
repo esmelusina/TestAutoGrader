@@ -36,7 +36,7 @@ do
       chmod +x $BASE
 
       git show ${branch}:$BASE.in &>/dev/null
-      if [[ $? -ne 0 ]]
+      if [[ $? -eq 0 ]]
       then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in) )
       else diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
       fi
