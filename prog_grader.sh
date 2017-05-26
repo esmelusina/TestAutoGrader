@@ -22,9 +22,16 @@ if [[ $name ]]; then name=$(dirname $name); else name="NULL"; fi
 
 echo $name
 
-
+# verify that an .eo file matches, otherwise we should ignore
 for FILE in $(git diff --name-only --diff-filter=A ${branch} ${commit} | grep *.cpp)
 do
+    #git show ${branch}:$BASE.eo > /dev/null
+    if <(git show ${branch}:$BASE.eo)
+    then
+    echo "EO WAS NOT FOUND!"
+    else
+    echo "EO WAS FOUND!"
+    fi
     BASE=${FILE%%.*}
     g++ $BASE.cpp -o $BASE
     chmod +x $BASE
