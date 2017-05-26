@@ -35,13 +35,12 @@ do
       g++ $BASE.cpp -o $BASE
       chmod +x $BASE
 
-      #git show ${branch}:$BASE.in &>/dev/null
-      #if [[ $? -ne 0 ]]
-      #then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
-      #else
+      git show ${branch}:$BASE.in &>/dev/null
+      if [[ $? -ne 0 ]]
+      then diff-line <(git show ${branch}:$BASE.eo) <(./$BASE)
+      else
       diff-line <(git show ${branch}:$BASE.eo) <(./$BASE <(git show ${branch}:$BASE.in) )      
-      ./$BASE
-      #fi
+      fi
     fi      
 done
 
