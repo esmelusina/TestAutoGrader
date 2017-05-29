@@ -22,7 +22,7 @@ student | A Student   | Working branch for students to commit work to*
 key     | Instructors | Contains all of the test I/O and expected answers
 
 Note that `key` is virtually unrelated to `master`, though it should be safe to
-merge or rebase key with master to create a branch that contains both the
+merge or rebase `key` with `master` to create a branch that contains both the
 exercise and answer key information.
 
 The student branch is expected to be very messy and full of WIP commits.
