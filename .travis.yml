@@ -1,8 +1,8 @@
 before_install:
- - chmod +x prog_grader.sh
+ - chmod +x fin_grader.sh
 
 install:
  - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
  - git fetch --all
   
-script: ./prog_grader.sh
+script: ./fin_grader.sh
