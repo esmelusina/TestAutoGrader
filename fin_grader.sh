@@ -17,6 +17,9 @@ diff-line()
   done
 }
 
+
+printenv
+echo
 echo $TEST_ENV_VAR
 TEST_ENV_VAR=BORK
 echo $TEST_ENV_VAR
