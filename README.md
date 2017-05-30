@@ -18,7 +18,7 @@ To test locally, you will need the following installed:
 Branch  | Modified By | Purpose
 --------|-------------|---------------------------------------------------
 master  | Instructors | Houses all of the exercise texts
-student | A Student   | Working branch for students to commit work to*
+student | A Student   | A mockup of a working branch that a student would commit work to\*
 key     | Instructors | Contains all of the test I/O and expected answers
 
 Note that `key` is virtually unrelated to `master`, though it should be safe to
@@ -59,4 +59,4 @@ _AutoGraderLocalGist_ via [GitHub Gist][AutoGraderLocalGist]
 5. Document branching scheme and folder conventions
 6. Document setup process and intended workflow for usage
 7. Consider adding a `.gitattributes` files
-  - LINE ENDINGS?
+    - LINE ENDINGS?
