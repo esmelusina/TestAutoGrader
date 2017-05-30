@@ -17,6 +17,9 @@ diff-line()
   done
 }
 
+echo $TEST_ENV_VAR
+TEST_ENV_VAR=BORK
+echo $TEST_ENV_VAR
 
 # this is the submission commit
 commit=$(git show --oneline -s --format="%h")
