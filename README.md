@@ -58,3 +58,5 @@ _AutoGraderLocalGist_ via [GitHub Gist][AutoGraderLocalGist]
 4. Acquire more ice cream
 5. Document branching scheme and folder conventions
 6. Document setup process and intended workflow for usage
+7. Consider adding a `.gitattributes` files
+  - LINE ENDINGS?
