@@ -12,7 +12,7 @@ diff-line()
   do
     read subline <$sub # also read from sub
     lin=$((lin+1)) # keep track of line numbers
-    if [ "$(echo "$subline" | tr -d '\n\r')" != "$(echo "$srcline" | tr -d '\n\r')" ] ;  then printf "$lin " ;
+    if [ "$(echo "$subline" | tr -d '\n\r')" != "$(echo "$srcline" | tr -d '\n\r')" ] ;  then printf "$lin " ; fi
     #if [ "$subline" != "$srcline" ] ;  then printf "$lin " ; fi # feed line # into stdout
   done
 }
