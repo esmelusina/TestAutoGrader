@@ -44,6 +44,16 @@ echo $name
 ##  done
 
 
+
+##########################################
+####
+###     Check for all added files.
+##
+##
+#
+#
+
+
 # quizes will check for non-historical file modifications
 for FILE in $(git diff --name-only --diff-filter=M ${branch} ${commit})
 do  
